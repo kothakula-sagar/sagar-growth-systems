@@ -426,3 +426,6 @@ textarea:focus, input:focus, select:focus {
   .main-panel { padding: 1rem; }
   .topbar { padding: 1rem; }
 }
+
+
+.admin-feature-panel{margin-top:20px;background:var(--surface,#fff);border:1px solid var(--border,#e5e7eb);border-radius:18px;padding:20px}.admin-feature-panel[hidden]{display:none}.admin-table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;min-width:760px}.admin-table th,.admin-table td{padding:12px;border-bottom:1px solid var(--border,#e5e7eb);text-align:left;font-size:.82rem;vertical-align:top}.admin-table th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted,#6b7280)}.admin-table small{color:var(--muted,#6b7280)}.admin-settings-form{display:grid;gap:12px;max-width:560px;margin-top:18px}.admin-settings-form label{font-size:.82rem;font-weight:700}.admin-settings-form input{display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;border:1px solid var(--border,#e5e7eb);border-radius:10px;background:var(--surface,#fff);color:inherit}.admin-inline-status{min-height:20px;font-size:.8rem;color:var(--muted,#6b7280)}.telegram-help{margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--surface-muted,#f7f7f8);font-size:.82rem}.telegram-help p{margin:6px 0 0;color:var(--muted,#6b7280)}

@@ -73,6 +73,8 @@
         <nav class="sidebar-nav" aria-label="Admin sections">
           <button class="nav-link active" type="button" data-section="dashboard">Dashboard</button>
           <button class="nav-link" type="button" data-section="blogs">Blogs</button>
+          <button class="nav-link" type="button" data-section="visitors">Resume Requests</button>
+          <button class="nav-link" type="button" data-section="telegram">Telegram</button>
         </nav>
 
         <div class="sidebar__footer">
@@ -117,6 +119,10 @@
               <p class="overview-label">Monthly Blog</p>
               <h2 id="monthlyBlogStatus">Pending</h2>
             </article>
+            <article class="overview-card">
+              <p class="overview-label">Resume Requests</p>
+              <h2 id="resumeRequestsCount">0</h2>
+            </article>
             
           </section>
 
@@ -131,6 +137,19 @@
               </div>
             </div>
           </section>
+        
+          <section class="admin-feature-panel" id="visitorsPanel" hidden>
+            <div class="panel-card__head"><h3>Resume Requests</h3><button class="btn btn-secondary btn-sm" id="refreshVisitors" type="button">Refresh</button></div>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Type</th><th>Name</th><th>Contact</th><th>Company</th><th>Requested</th><th>Downloaded</th></tr></thead><tbody id="visitorsTableBody"><tr><td colspan="6">No requests loaded.</td></tr></tbody></table></div>
+          </section>
+
+          <section class="admin-feature-panel" id="telegramPanel" hidden>
+            <div class="panel-card__head"><h3>Telegram Connection</h3></div>
+            <p class="panel-subtitle">The bot token stays in Render environment variables. This page stores only the admin chat ID used for resume-request alerts.</p>
+            <form id="telegramForm" class="admin-settings-form"><label>Admin Telegram Chat ID<input id="telegramChatId" type="text" placeholder="e.g. 123456789" required></label><button class="btn btn-primary" type="submit" id="telegramSaveButton">Save & Test Connection</button><span class="admin-inline-status" id="telegramStatus"></span></form>
+            <div class="telegram-help"><strong>How to get your chat ID</strong><p>Open your Telegram bot, press Start, then use a Telegram chat-ID bot or inspect the bot update data. Paste the numeric chat ID here. The bot also answers portfolio questions through the same Groq knowledge base.</p></div>
+          </section>
+
         </main>
       </div>
     </div>

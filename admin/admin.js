@@ -35,6 +35,14 @@ const monthlyBlogStatus = document.getElementById('monthlyBlogStatus');
 const moduleContent = document.getElementById('moduleContent');
 const activityHeading = document.getElementById('activityHeading');
 const dashboardTitle = document.getElementById('dashboardTitle');
+const resumeRequestsCount = document.getElementById('resumeRequestsCount');
+const visitorsPanel = document.getElementById('visitorsPanel');
+const telegramPanel = document.getElementById('telegramPanel');
+const visitorsTableBody = document.getElementById('visitorsTableBody');
+const refreshVisitors = document.getElementById('refreshVisitors');
+const telegramForm = document.getElementById('telegramForm');
+const telegramChatId = document.getElementById('telegramChatId');
+const telegramStatus = document.getElementById('telegramStatus');
 
 let currentSection = 'dashboard';
 let blogManager;
@@ -166,6 +174,50 @@ logoutButton.addEventListener('click', async () => {
   }
 });
 
+
+async function apiRequest(url, options = {}) {
+  if (!auth.currentUser) throw new Error('Not authenticated.');
+  const token = await auth.currentUser.getIdToken();
+  const headers = { ...(options.headers || {}), Authorization: `Bearer ${token}` };
+  const response = await fetch(url, { ...options, headers });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.error || 'Request failed.');
+  return data;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function loadResumeRequests() {
+  try {
+    const data = await apiRequest('/api/admin/resume-requests?limit=100');
+    resumeRequestsCount.textContent = data.items.length;
+    visitorsTableBody.innerHTML = data.items.length ? data.items.map(item => `<tr><td>${escapeHtml(item.type === 'hr_manager' ? 'HR / Manager' : 'Individual')}</td><td><strong>${escapeHtml(item.name)}</strong><br><small>${escapeHtml(item.email)}</small></td><td>${escapeHtml(item.mobile)}</td><td>${escapeHtml(item.company || '—')}</td><td>${item.createdAt ? new Date(item.createdAt).toLocaleString('en-IN') : '—'}</td><td>${item.downloadedAt ? 'Yes' : 'No'}</td></tr>`).join('') : '<tr><td colspan="6">No resume requests yet.</td></tr>';
+  } catch (error) {
+    visitorsTableBody.innerHTML = `<tr><td colspan="6">${escapeHtml(error.message)}</td></tr>`;
+  }
+}
+
+async function loadTelegramSettings() {
+  try {
+    const data = await apiRequest('/api/admin/settings/telegram');
+    telegramChatId.value = data.adminChatId || '';
+  } catch (error) {
+    telegramStatus.textContent = error.message;
+  }
+}
+
+refreshVisitors?.addEventListener('click', loadResumeRequests);
+telegramForm?.addEventListener('submit', async event => {
+  event.preventDefault();
+  telegramStatus.textContent = 'Saving…';
+  try {
+    await apiRequest('/api/admin/settings/telegram', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({adminChatId:telegramChatId.value.trim()}) });
+    telegramStatus.textContent = 'Connected. Test message sent.';
+  } catch (error) { telegramStatus.textContent = error.message; }
+});
+
 function switchSection(section) {
   currentSection = section;
   if (!auth.currentUser) {
@@ -177,7 +229,20 @@ function switchSection(section) {
     button.classList.toggle('active', button.dataset.section === section);
   });
 
-  if (section === 'blogs') {
+  visitorsPanel.hidden = section !== 'visitors';
+  telegramPanel.hidden = section !== 'telegram';
+  const activityPanel = moduleContent.closest('.panel-card');
+  if (activityPanel) activityPanel.hidden = section === 'visitors' || section === 'telegram';
+
+  if (section === 'visitors') {
+    dashboardTitle.textContent = 'Resume Requests';
+    activityHeading.textContent = 'Resume Requests';
+    loadResumeRequests();
+  } else if (section === 'telegram') {
+    dashboardTitle.textContent = 'Telegram';
+    activityHeading.textContent = 'Telegram';
+    loadTelegramSettings();
+  } else if (section === 'blogs') {
     dashboardTitle.textContent = 'Blog Management';
     activityHeading.textContent = 'Blog Management';
     if (blogManager) {

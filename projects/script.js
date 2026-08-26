@@ -16,7 +16,7 @@ const projects = [
     whatIBuilt: 'Lead capture, assignment, status tracking, follow-up management and reporting interfaces.',
     technologies: ['HTML','CSS','JavaScript','Firebase','APIs','AI Integrations'],
     image: '../assets/images/sagark.png',
-    liveUrl: '#',
+    liveUrl: 'https://sagar-psycho.github.io/abra-design-build-leads/index.html',
     githubUrl: '#',
     businessValue: 'Reduced manual lead handling and improved follow-up consistency across sales teams.'
   },
@@ -29,7 +29,7 @@ const projects = [
     whatIBuilt: 'An AI-assisted metadata generator and simple workflow to review and publish SEO content.',
     technologies: ['HTML','CSS','JavaScript','Groq AI','SEO'],
     image: '../assets/images/ksagar.png',
-    liveUrl: '#',
+    liveUrl: 'https://sagar-psycho.github.io/abra-zylo-seo-generator/',
     githubUrl: '#',
     businessValue: 'Enables faster SEO publishing while keeping human review in the loop.'
   },
@@ -42,10 +42,23 @@ const projects = [
     whatIBuilt: 'Lead capture, assignment UI, status management and campaign source tracking.',
     technologies: ['HTML','CSS','JavaScript','Firebase'],
     image: '../assets/images/sagark.png',
-    liveUrl: '#',
+    liveUrl: 'https://sagar-psycho.github.io/abra-design-build-leads/index.html',
     githubUrl: '#',
     businessValue: 'Improves sales handoff and reduces lost enquiries.'
-  }
+  },
+  {
+    id: 'salary-calculator',
+    title: 'Salary Calculator',
+    category: 'Web Development',
+    problem: 'Salary calculations often require quick conversions, hike estimates, offer comparisons and take-home estimates.',
+    solution: 'A free, mobile-friendly browser utility that combines salary conversion, hike calculation, expected salary, offer comparison and take-home estimation in one interface.',
+    whatIBuilt: 'Monthly-to-LPA and LPA-to-monthly conversion, salary hike calculator, expected CTC calculator, job-offer comparison and take-home salary estimator with local browser calculations.',
+    technologies: ['HTML','CSS','JavaScript'],
+    image: '../assets/images/ksagar.png',
+    liveUrl: 'https://sagar-psycho.github.io/LPA-Salary-Calculator/',
+    githubUrl: '#',
+    businessValue: 'Provides a fast, private and mobile-friendly way to evaluate common salary scenarios without sending calculation data to a server.'
+  },
 ];
 
 function renderProjects(list){
