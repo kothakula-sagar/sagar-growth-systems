@@ -67,6 +67,30 @@ function getBucket() {
 app.use(express.json({ limit: '256kb' }));
 app.use(express.urlencoded({ extended: false }));
 
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  const allowedOrigins = new Set([
+    'https://sagar-psycho.github.io',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+  ]);
+
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  }
+
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(204);
+  }
+
+  next();
+});
+
+
 function clean(value, max = 300) {
   return String(value || '').trim().replace(/[<>]/g, '').slice(0, max);
 }
@@ -116,15 +140,38 @@ async function notifyAdmin(visitor) {
 
 async function verifyAdmin(req, res, next) {
   try {
+    initFirebase();
+
     const auth = req.headers.authorization || '';
-    if (!auth.startsWith('Bearer ')) return res.status(401).json({ error: 'Authentication required.' });
+    if (!auth.startsWith('Bearer ')) {
+      return res.status(401).json({ error: 'Authentication required.' });
+    }
+
     const decoded = await admin.auth().verifyIdToken(auth.slice(7));
-    const configuredUid = process.env.ADMIN_UID;
-    if (!configuredUid || decoded.uid !== configuredUid) return res.status(403).json({ error: 'Admin access denied.' });
+    const configuredUid = String(process.env.ADMIN_UID || '').trim();
+
+    if (!configuredUid) {
+      console.error('ADMIN_UID is not configured.');
+      return res.status(500).json({ error: 'ADMIN_UID is not configured on the server.' });
+    }
+
+    if (decoded.uid !== configuredUid) {
+      console.error(`Admin UID mismatch. Token UID: ${decoded.uid}, configured UID: ${configuredUid}`);
+      return res.status(403).json({ error: 'Admin access denied.' });
+    }
+
     req.adminUser = decoded;
     next();
   } catch (error) {
-    return res.status(401).json({ error: 'Invalid admin session.' });
+    console.error('Firebase admin token verification failed:', {
+      code: error.code,
+      message: error.message
+    });
+    return res.status(401).json({
+      error: process.env.NODE_ENV === 'production'
+        ? 'Invalid admin session.'
+        : `Invalid admin session: ${error.message}`
+    });
   }
 }
 

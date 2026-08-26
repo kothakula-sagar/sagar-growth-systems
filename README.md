@@ -143,3 +143,8 @@ After adding a custom domain, use that custom domain as `PUBLIC_BASE_URL` and su
 ## Telegram local testing
 
 When `PUBLIC_BASE_URL` is not an HTTPS URL, the server automatically uses Telegram long polling for local development. Send `/id` to the bot to receive the current chat ID. On an HTTPS Render deployment, the server automatically registers the webhook at `/api/telegram/webhook`. Telegram does not allow `getUpdates` while an outgoing webhook is configured.
+
+
+## GitHub Pages + Render API
+
+This build supports the public portfolio on GitHub Pages with the Express API on Render. The browser automatically uses `http://localhost:3000` locally and `https://sagar-growth-systems.onrender.com` when hosted outside localhost. The Render server allows CORS requests from `https://sagar-psycho.github.io` for AI, resume submission/download, and authenticated admin API calls.

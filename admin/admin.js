@@ -9,6 +9,20 @@ import {
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
 import { initBlogManager } from './blog-manager.js';
 
+// The admin UI can be hosted on GitHub Pages while the protected API runs on Render.
+const API_BASE_URL = (() => {
+  const host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return 'http://localhost:3000';
+  }
+  return 'https://sagar-growth-systems.onrender.com';
+})();
+
+function apiUrl(path) {
+  return `${API_BASE_URL}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -179,7 +193,7 @@ async function apiRequest(url, options = {}) {
   if (!auth.currentUser) throw new Error('Not authenticated.');
   const token = await auth.currentUser.getIdToken();
   const headers = { ...(options.headers || {}), Authorization: `Bearer ${token}` };
-  const response = await fetch(url, { ...options, headers });
+  const response = await fetch(apiUrl(url), { ...options, headers });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(data.error || 'Request failed.');
   return data;
