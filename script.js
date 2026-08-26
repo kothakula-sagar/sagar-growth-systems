@@ -997,3 +997,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('copyYear');
   if(yearEl) yearEl.textContent = new Date().getFullYear();
 });
+
+/* ---------- Resume access gate ---------- */
+const resumeBackdrop = document.getElementById('resumeGateBackdrop');
+const resumeModal = document.getElementById('resumeGateModal');
+const resumeForm = document.getElementById('resumeGateForm');
+const resumeTypeInput = document.getElementById('resumeVisitorType');
+const resumeCompanyWrap = document.getElementById('resumeCompanyWrap');
+const resumeCompany = document.getElementById('resumeCompany');
+const resumeError = document.getElementById('resumeGateError');
+const resumeSubmit = document.getElementById('resumeGateSubmit');
+const resumeSpinner = document.getElementById('resumeGateSpinner');
+function openResumeGate(){ if(!resumeModal) return; resumeModal.hidden=false; resumeBackdrop.hidden=false; document.body.classList.add('modal-open'); document.getElementById('resumeName')?.focus(); }
+function closeResumeGate(){ if(!resumeModal) return; resumeModal.hidden=true; resumeBackdrop.hidden=true; document.body.classList.remove('modal-open'); }
+document.querySelectorAll('[data-resume-trigger]').forEach(btn=>btn.addEventListener('click',e=>{e.preventDefault();openResumeGate();}));
+if(new URLSearchParams(location.search).get('resume')==='1') setTimeout(openResumeGate, 250);
+document.getElementById('resumeGateClose')?.addEventListener('click',closeResumeGate); resumeBackdrop?.addEventListener('click',closeResumeGate);
+document.querySelectorAll('[data-resume-type]').forEach(card=>card.addEventListener('click',()=>{document.querySelectorAll('[data-resume-type]').forEach(c=>c.classList.remove('active'));card.classList.add('active');resumeTypeInput.value=card.dataset.resumeType; const isHr=card.dataset.resumeType==='hr_manager'; resumeCompanyWrap.hidden=!isHr; resumeCompany.required=isHr;}));
+resumeForm?.addEventListener('submit',async e=>{e.preventDefault(); resumeError.hidden=true; resumeSubmit.disabled=true; resumeSpinner.hidden=false; try{const body={type:resumeTypeInput.value,name:document.getElementById('resumeName').value.trim(),mobile:document.getElementById('resumeMobile').value.trim(),email:document.getElementById('resumeEmail').value.trim(),company:resumeCompany.value.trim()}; const r=await fetch('/api/visitor/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); const data=await r.json(); if(!r.ok) throw new Error(data.error||'Unable to submit.'); window.location.href='/api/resume/download/'+encodeURIComponent(data.downloadToken);}catch(err){resumeError.textContent=err.message;resumeError.hidden=false;resumeSubmit.disabled=false;resumeSpinner.hidden=true;}});
+
+/* ---------- Sagar AI ---------- */
+const aiToggle=document.getElementById('aiAssistantToggle'), aiPanel=document.getElementById('aiAssistantPanel'), aiClose=document.getElementById('aiAssistantClose'), aiForm=document.getElementById('aiAssistantForm'), aiInput=document.getElementById('aiAssistantInput'), aiMessages=document.getElementById('aiAssistantMessages');
+function addAiMessage(text, type){const el=document.createElement('div');el.className='ai-message '+(type==='user'?'ai-message--user':'ai-message--bot');el.textContent=text;aiMessages.appendChild(el);aiMessages.scrollTop=aiMessages.scrollHeight;return el;}
+aiToggle?.addEventListener('click',()=>{aiPanel.hidden=!aiPanel.hidden;if(!aiPanel.hidden)aiInput.focus();});aiClose?.addEventListener('click',()=>aiPanel.hidden=true);
+aiForm?.addEventListener('submit',async e=>{e.preventDefault();const message=aiInput.value.trim();if(!message)return;addAiMessage(message,'user');aiInput.value='';const typing=addAiMessage('Thinking…','bot');typing.classList.add('ai-message--typing');try{const r=await fetch('/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message})});const data=await r.json();typing.remove();addAiMessage(r.ok?data.answer:(data.error||'The assistant is unavailable right now.'),'bot');}catch(err){typing.remove();addAiMessage('The assistant is temporarily unavailable.','bot');}});

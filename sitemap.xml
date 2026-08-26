@@ -3,33 +3,33 @@
 
   <!-- Main pages -->
   <url>
-    <loc>https://sagar-psycho.github.io/sagar-growth-systems/</loc>
+    <loc>__SITE_URL__/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://sagar-psycho.github.io/sagar-growth-systems/portfolio/</loc>
+    <loc>__SITE_URL__/portfolio/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://sagar-psycho.github.io/sagar-growth-systems/projects/</loc>
+    <loc>__SITE_URL__/projects/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog -->
   <url>
-    <loc>https://sagar-psycho.github.io/sagar-growth-systems/blog/</loc>
+    <loc>__SITE_URL__/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Published blog article -->
   <url>
-    <loc>https://sagar-psycho.github.io/sagar-growth-systems/blog/?slug=how-ai-is-changing-digital-marketing-in-2026</loc>
+    <loc>__SITE_URL__/blog/?slug=how-ai-is-changing-digital-marketing-in-2026</loc>
     <lastmod>2026-08-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
