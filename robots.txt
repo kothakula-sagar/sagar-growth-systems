@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: __SITE_URL__/sitemap.xml
+Sitemap: https://sagar-growth-systems.kothakulasagar2002.workers.dev/sitemap.xml

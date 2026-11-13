@@ -18,15 +18,15 @@
 <meta name="author" content="Kothakula Sagar">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
-<link rel="canonical" href="__SITE_URL__/">
+<link rel="canonical" href="https://sagar-growth-systems.kothakulasagar2002.workers.dev/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Kothakula Sagar | Digital Marketer & Growth Systems Portfolio">
 <meta property="og:description" content="Portfolio of Kothakula Sagar, the digital marketer building growth systems with SEO, ads, analytics and AI workflows.">
-<meta property="og:url" content="__SITE_URL__/">
+<meta property="og:url" content="https://sagar-growth-systems.kothakulasagar2002.workers.dev/">
 <meta property="og:site_name" content="Kothakula Sagar Portfolio">
-<meta property="og:image" content="__SITE_URL__/assets/images/ksagar.png">
+<meta property="og:image" content="https://sagar-growth-systems.kothakulasagar2002.workers.dev/assets/images/ksagar.png">
 <meta property="og:image:alt" content="Kothakula Sagar — Digital Marketing Portfolio">
    <!-- =====================================================
          GOOGLE SEARCH CONSOLE VERIFICATION
@@ -42,7 +42,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kothakula Sagar | Digital Marketer & Growth Systems Portfolio">
 <meta name="twitter:description" content="Portfolio of Kothakula Sagar, the digital marketer building growth systems with SEO, ads, analytics and AI workflows.">
-<meta name="twitter:image" content="__SITE_URL__/assets/images/ksagar.png">
+<meta name="twitter:image" content="https://sagar-growth-systems.kothakulasagar2002.workers.dev/assets/images/ksagar.png">
 
 <link rel="icon" type="image/png" href="assets/images/ksagar.png">
 
@@ -56,18 +56,18 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  "@id": "__SITE_URL__/#profilepage",
-  "url": "__SITE_URL__/",
+  "@id": "https://sagar-growth-systems.kothakulasagar2002.workers.dev/#profilepage",
+  "url": "https://sagar-growth-systems.kothakulasagar2002.workers.dev/",
   "name": "Digital Marketing Portfolio | Kothakula Sagar",
   "description": "Portfolio showcasing digital marketing, SEO, paid advertising, e-commerce, analytics, CRM, AI workflows and marketing technology projects by Kothakula Sagar.",
   "inLanguage": "en",
   "mainEntity": {
     "@type": "Person",
-    "@id": "__SITE_URL__/#person",
+    "@id": "https://sagar-growth-systems.kothakulasagar2002.workers.dev/#person",
     "name": "Kothakula Sagar",
     "alternateName": ["Sagar Kothakula"],
-    "url": "__SITE_URL__/",
-    "image": "__SITE_URL__/assets/images/ksagar.png",
+    "url": "https://sagar-growth-systems.kothakulasagar2002.workers.dev/",
+    "image": "https://sagar-growth-systems.kothakulasagar2002.workers.dev/assets/images/ksagar.png",
     "jobTitle": "Digital Marketer",
     "sameAs": [
       "https://github.com/sagar-psycho",
@@ -110,7 +110,7 @@
     </nav>
 
     <div class="header-actions">
-      <a href="#" class="btn btn-primary btn-sm-pill resume-trigger" data-resume-trigger>
+      <a href="/assets/resume/Kothakula-Sagar-Resume.pdf" class="btn btn-primary btn-sm-pill" download>
         <i class="bi bi-download"></i> Download Resume
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -132,7 +132,7 @@
 
         <div class="hero-ctas">
           <a href="#projectsShowcase" class="btn btn-primary">Explore My Work <i class="bi bi-arrow-right"></i></a>
-          <a href="#" class="btn btn-ghost resume-trigger" data-resume-trigger>Download Resume <i class="bi bi-download"></i></a>
+          <a href="/assets/resume/Kothakula-Sagar-Resume.pdf" class="btn btn-ghost" download>Download Resume <i class="bi bi-download"></i></a>
         </div>
 
         <div class="hero-stats">
@@ -337,12 +337,15 @@
         <a href="blog/" class="btn btn-outline">View All Posts <i class="bi bi-arrow-right"></i></a>
       </div>
       <div class="blog-grid blog-grid-home" id="homeBlogGrid">
-        <div class="blog-card blog-card-loading">
-          <div class="blog-card-body">
-            <p class="blog-meta"><span>Loading</span></p>
-            <h3>Loading latest posts...</h3>
-          </div>
-        </div>
+        <article class="blog-card">
+          <a class="blog-card-link" href="/blog/measure-lead-quality-in-meta-ads/">
+            <div class="blog-card-body">
+              <p class="blog-meta"><span>Paid Media</span></p>
+              <h3>How to measure lead quality in Meta Ads</h3>
+              <p class="blog-card-excerpt">Track qualified leads and paying customers alongside cost per lead to see which Meta Ads campaigns deliver business results.</p>
+            </div>
+          </a>
+        </article>
       </div>
     </div>
   </section>
@@ -652,42 +655,6 @@
   </div>
 </div>
 
-
-<!-- ===================== RESUME ACCESS MODAL ===================== -->
-<div class="resume-gate-backdrop" id="resumeGateBackdrop" hidden></div>
-<div class="resume-gate-modal" id="resumeGateModal" role="dialog" aria-modal="true" aria-labelledby="resumeGateTitle" hidden>
-  <button class="resume-gate-close" id="resumeGateClose" aria-label="Close">&times;</button>
-  <div class="resume-gate-head">
-    <p class="eyebrow">RESUME ACCESS</p>
-    <h2 id="resumeGateTitle">Tell me a little about you</h2>
-    <p class="text-muted">A few details help me understand who is viewing my resume. Your resume download link is created after submission.</p>
-  </div>
-  <div class="resume-type-grid">
-    <button type="button" class="resume-type-card active" data-resume-type="hr_manager"><i class="bi bi-briefcase"></i><span>HR / Manager</span><small>Hiring, recruitment or business inquiry</small></button>
-    <button type="button" class="resume-type-card" data-resume-type="individual"><i class="bi bi-person"></i><span>User / Individual</span><small>Personal or professional interest</small></button>
-  </div>
-  <form id="resumeGateForm" class="resume-gate-form" novalidate>
-    <input type="hidden" id="resumeVisitorType" value="hr_manager">
-    <label>Name<input id="resumeName" name="name" type="text" autocomplete="name" required></label>
-    <label>Mobile Number<input id="resumeMobile" name="mobile" type="tel" autocomplete="tel" required></label>
-    <label>Email<input id="resumeEmail" name="email" type="email" autocomplete="email" required></label>
-    <label id="resumeCompanyWrap">Company Name<input id="resumeCompany" name="company" type="text" autocomplete="organization"></label>
-    <div class="resume-gate-error" id="resumeGateError" role="alert" hidden></div>
-    <button class="btn btn-primary btn-block" type="submit" id="resumeGateSubmit"><span>Submit & Download Resume</span><span class="spinner-inline" id="resumeGateSpinner" hidden></span></button>
-  </form>
-</div>
-
-<!-- ===================== AI ASSISTANT ===================== -->
-<div class="ai-assistant" id="aiAssistant">
-  <div class="ai-assistant__panel" id="aiAssistantPanel" hidden>
-    <div class="ai-assistant__head"><div><strong>Sagar AI</strong><span>Ask about my experience, skills & projects</span></div><button type="button" id="aiAssistantClose" aria-label="Close AI assistant">&times;</button></div>
-    <div class="ai-assistant__messages" id="aiAssistantMessages" aria-live="polite">
-      <div class="ai-message ai-message--bot">Hi, I’m Sagar AI. Ask me about Sagar’s marketing experience, SEO, paid ads, projects, tools or education.</div>
-    </div>
-    <form class="ai-assistant__form" id="aiAssistantForm"><input id="aiAssistantInput" type="text" maxlength="1200" placeholder="Ask about Sagar..." autocomplete="off"><button type="submit" aria-label="Send"><i class="bi bi-send"></i></button></form>
-  </div>
-  <button class="ai-assistant__toggle" id="aiAssistantToggle" type="button" aria-label="Open Sagar AI"><i class="bi bi-robot"></i><span>Ask Sagar AI</span></button>
-</div>
 
 <script type="module" src="script.js"></script>
 </body>

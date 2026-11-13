@@ -6,3 +6,5 @@ node_modules/
 # Firebase Admin private credentials
 firebase-service-account.json
 *.firebase-adminsdk*.json
+
+/dist/
