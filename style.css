@@ -690,3 +690,14 @@ body.modal-open{ overflow:hidden; }
   *,*::before,*::after{ animation:none !important; transition:none !important; }
   .reveal-ready .reveal-up{ opacity:1; transform:none; }
 }
+
+/* Align project artwork and keep anchored headings below the sticky header. */
+#projectsGrid .proj-media{ aspect-ratio:16/9; height:auto; }
+#projectsGrid .proj-media img{ width:100%; height:100%; object-fit:contain; }
+#projectsGrid .project-preview{ object-fit:contain; }
+#projectsShowcase{ scroll-margin-top:12px; }
+.blog-grid-archive{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.blog-grid-archive .blog-card h2{ font-size:clamp(1.25rem,2vw,1.6rem); }
+@media(max-width:640px){
+  .blog-grid-archive{ grid-template-columns:minmax(0,1fr); gap:16px; }
+}
