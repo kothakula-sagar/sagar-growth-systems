@@ -665,7 +665,7 @@ body.modal-open{ overflow:hidden; }
 .timeline-num{ flex-shrink:0; }
 .timeline-card,.proj-card,.work-card,.blog-card{ min-width:0; }
 .proj-card[hidden]{ display:none; }
-.project-preview{ width:100%; aspect-ratio:16/9; object-fit:cover; background:var(--surface-muted); }
+.project-preview{ width:100%; height:auto; flex:none; aspect-ratio:16/9; object-fit:cover; background:var(--surface-muted); }
 .contact-details a{ overflow-wrap:anywhere; }
 .contact-card::after{ pointer-events:none; }
 :focus-visible{ outline:3px solid #5272e9; outline-offset:4px; }
@@ -692,9 +692,9 @@ body.modal-open{ overflow:hidden; }
 }
 
 /* Align project artwork and keep anchored headings below the sticky header. */
-#projectsGrid .proj-media{ aspect-ratio:16/9; height:auto; }
-#projectsGrid .proj-media img{ width:100%; height:100%; object-fit:contain; }
-#projectsGrid .project-preview{ object-fit:contain; }
+.proj-card .proj-media{ aspect-ratio:16/9; height:auto; flex:none; }
+.proj-card .proj-media img{ width:100%; height:100%; object-fit:contain; }
+.proj-card .project-artwork img{ object-fit:cover; }
 #projectsShowcase{ scroll-margin-top:12px; }
 .blog-grid-archive{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
 .blog-grid-archive .blog-card h2{ font-size:clamp(1.25rem,2vw,1.6rem); }
