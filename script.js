@@ -679,7 +679,7 @@ window.addEventListener('popstate', () => {
     if(project){
       openCaseStudyModal(project.id);
     }
-  } else if(!caseStudyModal.hidden){
+  } else if(caseStudyModal && !caseStudyModal.hidden){
     closeCaseStudyModal();
   }
 });
@@ -694,6 +694,13 @@ if(navToggle){
     const open = mainNav.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', String(open));
   });
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && mainNav.classList.contains('open')){
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.focus();
+    }
+  });
   mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     mainNav.classList.remove('open');
     navToggle.setAttribute('aria-expanded','false');
@@ -705,6 +712,7 @@ if(navToggle){
 ========================================================= */
 function initReveal(){
   const targets = document.querySelectorAll('.reveal-up');
+  document.documentElement.classList.add('reveal-ready');
   if(!('IntersectionObserver' in window)){
     targets.forEach(t => t.classList.add('in-view'));
     return;
