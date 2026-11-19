@@ -4,6 +4,44 @@ yearEl.textContent = new Date().getFullYear();
 
 const projects = [
   {
+    id: 'business-score-php',
+    title: 'Business Score PHP',
+    category: 'Marketing Technology',
+    problem: 'Business owners need a simple and consistent way to review operational readiness.',
+    solution: 'A PHP business assessment that scores Yes, Partially and No answers and stores submissions as JSON.',
+    whatIBuilt: 'A structured business score questionnaire and score summary for business performance review.',
+    technologies: ['PHP','HTML','CSS','JavaScript'],
+    image: '../assets/images/projects/business-score-php.webp',
+    liveUrl: 'https://github.com/kothakula-sagar/business-score-php',
+    businessValue: 'A reusable business-assessment workflow without a spreadsheet.'
+  },
+  {
+    id: 'india-ptl-ftl-maps',
+    title: 'India PTL and FTL Maps',
+    category: 'Marketing Technology',
+    problem: 'Freight campaigns need a practical shortlist of service locations before targeting.',
+    solution: 'Sagar Freight Atlas maps 104 industrial and distribution locations across India for PTL and FTL planning.',
+    whatIBuilt: 'Freight location map, state and freight filters, and campaign-planning shortlist workflow.',
+    technologies: ['JavaScript','Leaflet','Meta Ads Planning'],
+    image: '../assets/images/projects/india-ptl-ftl-maps.webp',
+    liveUrl: 'https://github.com/kothakula-sagar/india-ptl-ftl-maps',
+    businessValue: 'Helps shortlist pickup markets and campaign locations.'
+  },
+  {
+    id: 'fiora-ai',
+    title: 'Fiora AI',
+    category: 'Marketing Technology',
+    tags: ['AI'],
+    problem: 'Financial operations often have repetitive requests that need a clearer support workflow.',
+    solution: 'A financial-operations support concept focused on clear request intake and next actions.',
+    whatIBuilt: 'A structured AI-oriented user experience for financial workflow support.',
+    technologies: ['HTML','CSS','JavaScript','Firebase','AI'],
+    image: '../assets/images/projects/finora.png',
+    liveUrl: '',
+    businessValue: 'Shows how guided workflows can simplify complex operational requests.'
+  },
+
+  {
     id: 'abra-crm',
     title: 'ABRA Logistics CRM',
     category: 'CRM',
@@ -65,7 +103,7 @@ function renderProjects(list){
         <p><strong>Solution:</strong> ${p.solution}</p>
         <p><strong>What I Built:</strong> ${p.whatIBuilt}</p>
         <div class="d-flex flex-wrap gap-2 mt-auto">
-          <a class="btn btn-sm btn-primary" href="${p.liveUrl}">View Project</a>
+          ${p.liveUrl ? `<a class="btn btn-sm btn-primary" href="${p.liveUrl}" target="_blank" rel="noopener noreferrer">View Project</a>` : `<span class="small text-muted">Case study preview</span>`}
 
         </div>
         </div>
@@ -92,6 +130,6 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     const filter = btn.getAttribute('data-filter');
     featured.forEach(card => { card.hidden = !['all', 'Marketing Technology'].includes(filter); });
     if(filter==='all') renderProjects(projects);
-    else renderProjects(projects.filter(p=>p.category===filter || p.technologies.includes(filter)));
+    else renderProjects(projects.filter(p=>p.category===filter || p.technologies.includes(filter) || (p.tags || []).includes(filter)));
   });
 });
