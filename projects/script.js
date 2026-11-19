@@ -54,7 +54,7 @@ const projects = [
 ];
 
 function renderProjects(list){
-  projectsList.innerHTML = list.map(p=>`
+  const cards = list.map(p=>`
     <div class="col-12 col-md-6 col-lg-4">
       <article class="proj-card h-100">
         <img src="${p.image}" alt="${p.title}" class="project-preview" loading="lazy">
@@ -72,6 +72,7 @@ function renderProjects(list){
       </article>
     </div>
   `).join('');
+  projectsList.innerHTML = cards || '<div class="col-12"><p class="text-muted py-3" role="status">No projects in this category.</p></div>';
 }
 
 const featured = document.querySelectorAll('#featuredProjects .proj-card');
@@ -89,7 +90,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     });
     btn.classList.add('active');
     const filter = btn.getAttribute('data-filter');
-    featured.forEach(card => { card.hidden = !['all', 'Web Development'].includes(filter); });
+    featured.forEach(card => { card.hidden = !['all', 'Marketing Technology'].includes(filter); });
     if(filter==='all') renderProjects(projects);
     else renderProjects(projects.filter(p=>p.category===filter || p.technologies.includes(filter)));
   });
