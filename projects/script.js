@@ -89,7 +89,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     });
     btn.classList.add('active');
     const filter = btn.getAttribute('data-filter');
-    featured.forEach(card => { card.hidden = !['all', 'Web Development'].includes(filter); });
+    featured.forEach(card => { card.hidden = !['all', 'Marketing Technology'].includes(filter); });
     if(filter==='all') renderProjects(projects);
     else renderProjects(projects.filter(p=>p.category===filter || p.technologies.includes(filter)));
   });
