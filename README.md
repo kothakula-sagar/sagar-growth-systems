@@ -1,18 +1,94 @@
-# Kothakula Sagar Portfolio v2
+<div align="center">
 
-This version adds:
+# 🚀 Sagar Growth Systems
 
-- Groq-powered "Sagar AI" assistant on the portfolio
-- Shared AI knowledge base stored in `assets/knowledge/resume-knowledge.md`
-- Resume PDF stored in `assets/resume/Kothakula-Sagar-Resume.pdf`
-- Resume download gate for HR/Managers and Individuals
-- Firestore storage for resume-request leads
-- One-time, 10-minute resume download tokens
-- Telegram notification for new resume requests
-- Admin portal sections for Resume Requests and Telegram settings
-- Telegram chatbot using the same Groq knowledge base
-- Render-ready Node/Express server
-- Dynamic `PUBLIC_BASE_URL` replacement for canonical URLs, Open Graph URLs, sitemap and robots.txt
+### Digital Marketing • Performance Growth • Web Experiences
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=23&duration=3000&pause=900&color=37B6F6&center=true&vCenter=true&width=800&lines=From+Clicks+to+Customers+%F0%9F%93%88;Building+High-Converting+Digital+Experiences;Meta+Ads+%7C+Google+Ads+%7C+SEO+%7C+Analytics;Marketing+Meets+Technology" alt="Animated headline introducing Sagar Growth Systems" />
+
+<br />
+
+[![Portfolio](https://img.shields.io/badge/Explore-Live_Portfolio-2563EB?style=for-the-badge&logo=githubpages&logoColor=white)](https://kothakula-sagar.github.io/sagar-growth-systems/)
+[![GitHub](https://img.shields.io/badge/GitHub-kothakula--sagar-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/kothakula-sagar)
+[![LinkedIn](https://img.shields.io/badge/Focus-Digital_Growth-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](#-about-this-project)
+
+</div>
+
+---
+
+## 👋 About this project
+
+**Sagar Growth Systems** is the personal portfolio and digital-growth showcase of **Kothakula Sagar**, a Bengaluru-based digital marketing professional with experience in performance advertising, lead generation, SEO, analytics and marketing-oriented websites.
+
+It brings together campaign achievements, selected work and an AI-assisted portfolio experience. The project also includes optional server-side integrations for resume requests, administration and messaging.
+
+### 📌 Campaign highlight
+
+| Metric | Reported outcome |
+| :--- | ---: |
+| 🎯 Campaign | Domestic Road Freight |
+| 💸 Daily ad budget | **₹1,000** |
+| 📥 Leads generated | **125+** |
+| 🤝 Converted paying customers | **50+** |
+
+> Figures are based on the campaign results supplied by the portfolio owner; they are not live analytics.
+
+## 🧰 Skills & tools
+
+<div align="center">
+
+![Meta Ads](https://img.shields.io/badge/Meta_Ads-0866FF?style=flat-square&logo=meta&logoColor=white)
+![Google Ads](https://img.shields.io/badge/Google_Ads-4285F4?style=flat-square&logo=googleads&logoColor=white)
+![Google Analytics](https://img.shields.io/badge/GA4-E37400?style=flat-square&logo=googleanalytics&logoColor=white)
+![SEO](https://img.shields.io/badge/SEO-14865D?style=flat-square)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-DD2C00?style=flat-square&logo=firebase&logoColor=white)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white)
+![Render](https://img.shields.io/badge/Render-000000?style=flat-square&logo=render&logoColor=white)
+
+</div>
+
+## ✨ Portfolio experience
+
+| Feature | What it does |
+| :--- | :--- |
+| 🤖 **Sagar AI** | Groq-powered AI assistant grounded in portfolio knowledge |
+| 📄 **Resume request flow** | Resume access requests, one-time tokens and admin notifications |
+| 🧠 **Knowledge base** | Shared resume and experience context for AI responses |
+| 📬 **Telegram integration** | Bot responses and request notifications |
+| 🔐 **Admin portal** | Firebase-based administrative tools |
+| 🌍 **SEO-ready delivery** | Configurable canonical URLs, sitemap and robots.txt |
+
+> Some features depend on environment variables and separately deployed backend services. The public GitHub Pages site does not itself run the Node.js server.
+
+## 📈 GitHub activity
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=kothakula-sagar&show_icons=true&hide_border=true&theme=transparent" alt="GitHub activity statistics" height="160" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kothakula-sagar&layout=compact&hide_border=true&theme=transparent" alt="Most-used GitHub repository languages" height="160" />
+
+<br />
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=kothakula-sagar&theme=github-compact&hide_border=true" alt="GitHub contribution activity graph" width="95%" />
+
+</div>
+
+<details>
+<summary><b>🎬 About the animated visuals</b></summary>
+
+The typing animation is supplied by a third-party SVG service. Stats and the activity graph also use third-party image endpoints, so they may be temporarily unavailable if those services experience downtime or rate limits. No executable JavaScript is required in the README.
+
+</details>
+
+---
+
+## ⚙️ Developer documentation
+
+The sections below preserve the project's setup and deployment guidance.
 
 ## 1. Local setup
 
